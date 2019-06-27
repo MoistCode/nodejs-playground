@@ -1,1 +1,3 @@
-console.log("hello from nodejs;");
+// console.log("hello from nodejs;");
+
+const fs = require("fs");
