@@ -6,3 +6,6 @@ function requestListener(req, res) {
 }
 
 const server = http.createServer(requestListener);
+const PORT = 3000;
+
+server.listen(PORT);
