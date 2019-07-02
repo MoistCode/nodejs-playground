@@ -5,4 +5,4 @@ function requestListener(req, res) {
   console.log(req);
 }
 
-http.createServer(requestListener);
+const server = http.createServer(requestListener);
