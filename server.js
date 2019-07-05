@@ -8,21 +8,34 @@ function requestListener(req, res) {
 
   if (url === "/") {
     res.write(`
+      <html>
+        <head>
+          <title>Homepage</title>
+        </head>
+        <body>
+          <form action="/message" method="POST">
+            <input type="text" name="message">
+            <button type="submit">Send</button>
+          </form>
+        </body>
+      </html>
+    `);
+
+    return res.end();
+  }
+
+  res.setHeader("Content-Type", "text/html");
+
+  res.write(`
     <html>
       <head>
         <title>Homepage</title>
       </head>
       <body>
-        <form action="/message" method="POST">
-          <input type="text">
-          <button type="submit">Send</button>
-        </form>
+        <h1>You're not on the homepage ;D</h1>
       </body>
     </html>
   `);
-  }
-
-  res.setHeader("Content-Type", "text/html");
 
   res.end();
 }
