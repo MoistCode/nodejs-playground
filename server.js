@@ -2,20 +2,27 @@ const http = require("http");
 
 // This function will run for every request sent to the server
 function requestListener(req, res) {
-  console.log(req.url, req.method, req.headers);
+  // console.log(req.url, req.method, req.headers);
   // process.exit();
-  res.setHeader("Content-Type", "text/html");
+  const { url } = req;
 
-  res.write(`
+  if (url === "/") {
+    res.write(`
     <html>
       <head>
-        <title>My First Page</title>
+        <title>Homepage</title>
       </head>
       <body>
-        <h1>This is a very complex html file</h1>
+        <form action="/message" method="POST">
+          <input type="text">
+          <button type="submit">Send</button>
+        </form>
       </body>
     </html>
   `);
+  }
+
+  res.setHeader("Content-Type", "text/html");
 
   res.end();
 }
