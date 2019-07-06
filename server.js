@@ -1,10 +1,11 @@
 const http = require("http");
+const fs = require("fs");
 
 // This function will run for every request sent to the server
 function requestListener(req, res) {
   // console.log(req.url, req.method, req.headers);
   // process.exit();
-  const { url } = req;
+  const { url, method } = req;
 
   if (url === "/") {
     res.write(`
@@ -22,6 +23,9 @@ function requestListener(req, res) {
     `);
 
     return res.end();
+  }
+
+  if (url === "/message" && method === "POST") {
   }
 
   res.setHeader("Content-Type", "text/html");
