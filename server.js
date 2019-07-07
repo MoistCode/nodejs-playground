@@ -35,6 +35,11 @@ function requestListener(req, res) {
       body.push(chunk);
     });
 
+    req.on('end', () => {
+      const parsedBody = Buffer.concat.(body).toString();
+      console.log(parsedBody);
+    })
+
     // res.writeHeader(302, {});
     res.statusCode = 302;
     res.setHeader("Location", "/");
