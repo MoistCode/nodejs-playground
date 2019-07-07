@@ -28,6 +28,13 @@ function requestListener(req, res) {
   if (url === "/message" && method === "POST") {
     fs.writeFileSync("message.txt", "Dummy");
 
+    const body = [];
+
+    req.on("data", chunk => {
+      console.log(chunk);
+      body.push(chunk);
+    });
+
     // res.writeHeader(302, {});
     res.statusCode = 302;
     res.setHeader("Location", "/");
