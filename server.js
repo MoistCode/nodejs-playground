@@ -26,6 +26,11 @@ function requestListener(req, res) {
   }
 
   if (url === "/message" && method === "POST") {
+    fs.writeFileSync("message.txt", "Dummy");
+
+    // res.writeHeader(302, {});
+    res.statusCode = 302;
+    res.setHeader("Location", "/");
   }
 
   res.setHeader("Content-Type", "text/html");
