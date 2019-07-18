@@ -7,7 +7,9 @@
 const http = require("http");
 
 function requestListener(req, res) {
+    // This is what is being sent to us
     const { url, method, headers } = req;
+
     // process.exit();
 }
 
