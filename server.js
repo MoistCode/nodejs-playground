@@ -6,7 +6,10 @@
 
 const http = require("http");
 
-function requestListener(req, res) {}
+function requestListener(req, res) {
+    const { url, method, headers } = req;
+    // process.exit();
+}
 
 const server = http.createServer(requestListener);
 
