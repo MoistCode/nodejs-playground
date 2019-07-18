@@ -10,7 +10,25 @@ function requestListener(req, res) {
     // This is what is being sent to us
     const { url, method, headers } = req;
 
+    console.log(url, method, headers);
+
     // process.exit();
+
+    res.setHeader("Content-Type", "text/html");
+
+    res.write(`
+      <html>
+        <head>
+          <title>My Title</title>
+        </head>
+        <body>
+          <h1>This is a heading</h1>
+          <p>Hello from Node!</p>
+        </body>
+      </html>
+    `);
+
+    res.end();
 }
 
 const server = http.createServer(requestListener);
