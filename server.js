@@ -14,19 +14,28 @@ function requestListener(req, res) {
 
     // process.exit();
 
-    res.setHeader("Content-Type", "text/html");
+    switch (url) {
+        default:
+            res.write(`
+          <html>
+            <head>
+              <title>Homepage</title>
+            </head>
+            <body>
+              <h1>This is the homepage</h1>
+              <form action="/message" method="POST">
+                <input type="text">
+                <button type="submit">
+                  Submit
+                </button>
+              </form>
+            </body>
+          </html>
+        `);
+            break;
+    }
 
-    res.write(`
-      <html>
-        <head>
-          <title>My Title</title>
-        </head>
-        <body>
-          <h1>This is a heading</h1>
-          <p>Hello from Node!</p>
-        </body>
-      </html>
-    `);
+    res.setHeader("Content-Type", "text/html");
 
     res.end();
 }
