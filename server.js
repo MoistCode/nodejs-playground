@@ -7,6 +7,20 @@
 const http = require("http");
 const fs = require("fs");
 
+function onChunkListener(body) {
+  return chunk => {
+    console.log(chunk);
+    body.push(chunk);
+  };
+}
+
+function onChunkEndListener(body) {
+  return () => {
+    const parsedBody = Buffer.concat(body).toString();
+    console.log(parsedBody);
+  };
+}
+
 function requestListener(req, res) {
   // This is what is being sent to us
   const { url, method, headers } = req;
@@ -19,12 +33,17 @@ function requestListener(req, res) {
   switch (url) {
     case "/message":
       if (method === "POST") {
+        const body = [];
+
+        req.on("data", onChunkListener(body));
+        req.on("end", onChunkEndListener(body));
+
         fs.writeFileSync("message.txt", "DUMMY");
 
-        // res.statusCode = 302;
-        // res.setHeader('Location', '/');
+        res.statusCode = 302;
+        res.setHeader("Location", "/");
 
-        res.writeHead(302, "/");
+        // res.writeHead(302, "/");
       }
 
       break;
