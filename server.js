@@ -14,10 +14,17 @@ function requestListener(req, res) {
   console.log(url, method, headers);
 
   // process.exit();
+  res.setHeader("Content-Type", "text/html");
 
   switch (url) {
     case "/message":
       if (method === "POST") {
+        fs.writeFileSync("message.txt", "DUMMY");
+
+        // res.statusCode = 302;
+        // res.setHeader('Location', '/');
+
+        res.writeHead(302, "/");
       }
 
       break;
@@ -41,8 +48,6 @@ function requestListener(req, res) {
 
       break;
   }
-
-  res.setHeader("Content-Type", "text/html");
 
   res.end();
 }
