@@ -17,7 +17,11 @@ function onChunkListener(body) {
 function onChunkEndListener(body) {
   return () => {
     const parsedBody = Buffer.concat(body).toString();
-    console.log(parsedBody);
+    const message = parsedBody.split("=")[1];
+
+    fs.writeFileSync("message.txt", message);
+
+    // console.log(parsedBody);
   };
 }
 
@@ -37,8 +41,6 @@ function requestListener(req, res) {
 
         req.on("data", onChunkListener(body));
         req.on("end", onChunkEndListener(body));
-
-        fs.writeFileSync("message.txt", "DUMMY");
 
         res.statusCode = 302;
         res.setHeader("Location", "/");
