@@ -19,7 +19,8 @@ function onChunkEndListener(body) {
     const parsedBody = Buffer.concat(body).toString();
     const message = parsedBody.split("=")[1];
 
-    fs.writeFileSync("message.txt", message);
+    // fs.writeFileSync("message.txt", message);
+    fs.writeFile("message.txt", message);
 
     // console.log(parsedBody);
   };
