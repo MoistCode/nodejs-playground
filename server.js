@@ -14,13 +14,17 @@ function onChunkListener(body) {
   };
 }
 
+function writeMessageCB() {
+  console.log("Handling CB");
+}
+
 function onChunkEndListener(body) {
   return () => {
     const parsedBody = Buffer.concat(body).toString();
     const message = parsedBody.split("=")[1];
 
     // fs.writeFileSync("message.txt", message);
-    fs.writeFile("message.txt", message);
+    fs.writeFile("message.txt", message, writeMessageCB);
 
     // console.log(parsedBody);
   };
