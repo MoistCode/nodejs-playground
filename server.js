@@ -7,29 +7,6 @@
 const http = require("http");
 const fs = require("fs");
 
-function onChunkListener(body) {
-  return chunk => {
-    // console.log(chunk);
-    body.push(chunk);
-  };
-}
-
-function writeMessageCB() {
-  console.log("Handling CB");
-}
-
-function onChunkEndListener(body) {
-  return () => {
-    const parsedBody = Buffer.concat(body).toString();
-    const message = parsedBody.split("=")[1];
-
-    // fs.writeFileSync("message.txt", message);
-    fs.writeFile("message.txt", message, writeMessageCB);
-
-    // console.log(parsedBody);
-  };
-}
-
 function requestListener(req, res) {
   // This is what is being sent to us
   const { url, method, headers } = req;
@@ -44,8 +21,20 @@ function requestListener(req, res) {
       if (method === "POST") {
         const body = [];
 
-        req.on("data", onChunkListener(body));
-        req.on("end", onChunkEndListener(body));
+        req.on("data", chunk => {
+          // console.log(chunk);
+          body.push(chunk);
+        });
+
+        req.on("end", () => {
+          const parsedBody = Buffer.concat(body).toString();
+          const message = parsedBody.split("=")[1];
+
+          // fs.writeFileSync("message.txt", message);
+          fs.writeFile("message.txt", message, writeMessageCB);
+
+          // console.log(parsedBody);
+        });
 
         res.statusCode = 302;
         res.setHeader("Location", "/");
