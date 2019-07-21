@@ -9,7 +9,7 @@ const fs = require("fs");
 
 function onChunkListener(body) {
   return chunk => {
-    console.log(chunk);
+    // console.log(chunk);
     body.push(chunk);
   };
 }
@@ -29,7 +29,7 @@ function requestListener(req, res) {
   // This is what is being sent to us
   const { url, method, headers } = req;
 
-  console.log(url, method, headers);
+  // console.log(url, method, headers);
 
   // process.exit();
   res.setHeader("Content-Type", "text/html");
