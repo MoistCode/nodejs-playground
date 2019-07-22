@@ -2,6 +2,7 @@
  * Different OS use different paths
  * http launches a server; sends requests
  * https launches a SSL server
+ * Worker pools handle the heavy lifting (i.e., fs); different threads
  */
 
 const http = require("http");
