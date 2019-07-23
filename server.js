@@ -4,6 +4,7 @@
  * https launches a SSL server
  * Worker pools handle the heavy lifting (i.e., fs); different threads\
  * CBs go to event loop
+ * Client => Req => Server => Res => Client
  */
 
 const http = require("http");
