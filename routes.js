@@ -60,6 +60,10 @@ function requestListener(req, res) {
   res.end();
 }
 
-module.exports = {
+// module.exports = {
+//   requestListener
+// };
+
+exports = {
   requestListener
 };
