@@ -5,6 +5,8 @@
  * Worker pools handle the heavy lifting (i.e., fs); different threads\
  * CBs go to event loop
  * Client => Req => Server => Res => Client
+ * Node program quites when there is no more work to do
+ * createServer never finishes by default; process.exit()
  */
 
 const http = require("http");
