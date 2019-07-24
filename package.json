@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/MoistCode/nodejs-playground/issues"
   },
-  "homepage": "https://github.com/MoistCode/nodejs-playground#readme"
+  "homepage": "https://github.com/MoistCode/nodejs-playground#readme",
+  "dependencies": {
+    "lodash": "^4.17.15"
+  }
 }
