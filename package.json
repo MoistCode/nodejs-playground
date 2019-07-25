@@ -4,7 +4,7 @@
   "description": "A playground for NodeJS related items",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon app.js"
   },
   "repository": {
     "type": "git",

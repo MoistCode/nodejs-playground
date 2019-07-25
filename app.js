@@ -6,8 +6,21 @@
  *  4.      Sails.js
  *
  *  Highly flexible
+ *  Middlewares!
  */
 
+const http = require("http");
 const express = require("express");
 
 const app = express();
+
+const PORT = 3000;
+
+app.use((req, res, next) => {
+  console.log("middleware1");
+  next(); // Necessary to move forward
+});
+
+const server = http.createServer(app);
+
+server.listen(PORT);
