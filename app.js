@@ -27,10 +27,13 @@ app.use((req, res, next) => {
 });
 
 app.use((req, res, next) => {
-  console.log("middleware2");
-  next(); // Necessary to move forward
+  console.log("middleware3");
+
+  res.send();
 });
 
-const server = http.createServer(app);
+// const server = http.createServer(app);
 
-server.listen(PORT);
+// server.listen(PORT);
+
+app.listen(PORT);
