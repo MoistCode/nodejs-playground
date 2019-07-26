@@ -21,6 +21,16 @@ app.use((req, res, next) => {
   next(); // Necessary to move forward
 });
 
+app.use((req, res, next) => {
+  console.log("middleware2");
+  next(); // Necessary to move forward
+});
+
+app.use((req, res, next) => {
+  console.log("middleware2");
+  next(); // Necessary to move forward
+});
+
 const server = http.createServer(app);
 
 server.listen(PORT);
