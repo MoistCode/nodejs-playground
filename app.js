@@ -19,7 +19,7 @@ const PORT = 3000;
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use("/add-product", (req, res, next) => {
+app.get("/add-product", (req, res, next) => {
   res.send(`
     <h1>Add Product</h1>
     <form action="/product" method="POST">
