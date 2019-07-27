@@ -11,14 +11,13 @@
 
 const http = require("http");
 const express = require("express");
+const bodyParser = require("body-parser");
 
 const app = express();
 
 const PORT = 3000;
 
-app.use("/", (req, res, next) => {
-  next();
-});
+app.use(bodyParser.urlencoded());
 
 app.use("/add-product", (req, res, next) => {
   res.send(`
