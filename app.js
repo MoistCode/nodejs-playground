@@ -32,7 +32,11 @@ app.use("/add-product", (req, res, next) => {
   `);
 });
 
-app.use("/product", (req, res, next) => {});
+app.use("/product", (req, res, next) => {
+  const { body } = req;
+
+  res.redirect("/");
+});
 
 // Gets executed for / and /add-product
 app.use("/", (req, res, next) => {
