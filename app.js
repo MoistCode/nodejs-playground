@@ -9,38 +9,18 @@
  *  Middlewares!
  */
 
-const http = require("http");
 const express = require("express");
 const bodyParser = require("body-parser");
+
+// Routes
+const { adminRouter } = require("./routes/admin");
+const { shopRouter } = require("./routes/shop");
 
 const app = express();
 
 const PORT = 3000;
 
 app.use(bodyParser.urlencoded({ extended: false }));
-
-app.get("/add-product", (req, res, next) => {
-  res.send(`
-    <h1>Add Product</h1>
-    <form action="/product" method="POST">
-      <input type="text" name="title">
-      <button type="submit">Add Product</button>
-    </form>
-  `);
-});
-
-app.post("/product", (req, res, next) => {
-  const { body } = req;
-
-  res.redirect("/");
-});
-
-// Gets executed for / and /add-product
-app.get("/", (req, res, next) => {
-  res.send(`
-    <h1>Homepage</h1>
-  `);
-});
 
 // const server = http.createServer(app);
 
