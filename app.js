@@ -22,6 +22,15 @@ const PORT = 3000;
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
+app.use(adminRouter);
+app.use(shopRouter);
+
+app.get("/", (req, res, next) => {
+  res.send(`
+    <h1>Hello from the other side</h1>
+  `);
+});
+
 // const server = http.createServer(app);
 
 // server.listen(PORT);
