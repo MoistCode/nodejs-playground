@@ -22,8 +22,8 @@ const PORT = 3000;
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(adminRouter);
-app.use(shopRouter);
+app.use("/admin", adminRouter);
+app.use("/", shopRouter);
 
 // Handles 404
 app.use((req, res, next) => {
