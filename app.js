@@ -11,6 +11,7 @@
 
 const express = require("express");
 const bodyParser = require("body-parser");
+const path = require("path");
 
 // Routes
 const { adminRouter } = require("./routes/admin");
@@ -23,13 +24,11 @@ const PORT = 3000;
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use("/admin", adminRouter);
-app.use("/", shopRouter);
+app.use(shopRouter);
 
 // Handles 404
 app.use((req, res, next) => {
-  res.status(404).send(`
-    <h1>Page not found</h1>
-  `);
+  res.status(404).sendFile(path.join(__dirname, "views", "404.html"));
 });
 
 // const server = http.createServer(app);
