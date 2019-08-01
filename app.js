@@ -21,8 +21,11 @@ const app = express();
 
 const PORT = 3000;
 
+// Middleware
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, "public")));
 
+// Route handlers
 app.use("/admin", adminRouter);
 app.use(shopRouter);
 
