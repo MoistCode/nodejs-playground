@@ -19,6 +19,9 @@ const { shopRouter } = require("./routes/shop");
 
 const app = express();
 
+// Setting global configs
+app.set({ "view engine": "pug" });
+
 const PORT = 3000;
 
 // Middleware
