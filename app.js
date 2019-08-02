@@ -23,7 +23,7 @@ const PORT = 3000;
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "public"))); // Direct access to file system
 
 // Route handlers
 app.use("/admin", adminRouter);
