@@ -20,8 +20,8 @@ const { shopRouter } = require("./routes/shop");
 const app = express();
 
 // Setting global configs
-app.set({ "view engine": "pug" });
-// app.set({'views', 'views'}); express does this automatically
+app.set("view engine", "pug");
+// app.set('views', 'views'); express does this automatically
 
 const PORT = 3000;
 
