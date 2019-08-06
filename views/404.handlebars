@@ -14,6 +14,10 @@
       <ul>
         <li><a href="/">Shop</a></li>
         <li><a href="/admin/add-product">Add Product</a></li>
+        {{# if hasProducts }}
+        {{# else}}
+        <h1>No products found</h1>
+        {{/if}}
       </ul>
     </nav>
   </header>
