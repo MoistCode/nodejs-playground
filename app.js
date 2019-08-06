@@ -12,15 +12,19 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
+const expressHBS = require("express-handlebars");
 
 // Routes
 const { adminRouter } = require("./routes/admin");
 const { shopRouter } = require("./routes/shop");
-
 const app = express();
 
+// Register handlebars
+app.engine("handlebars", expressHBS);
+
 // Setting global configs
-app.set("view engine", "pug");
+app.set("view engine", "handlebars");
+// app.set("view engine", "pug");
 // app.set('views', 'views'); express does this automatically
 
 const PORT = 3000;
