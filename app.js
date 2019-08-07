@@ -20,7 +20,10 @@ const { shopRouter } = require("./routes/shop");
 const app = express();
 
 // Register handlebars
-app.engine("handlebars", expressHBS);
+app.engine(
+  "handlebars",
+  expressHBS({ layoutsDir: "views/layouts/", defaultLayout: "main-layout" })
+);
 
 // Setting global configs
 app.set("view engine", "handlebars");
