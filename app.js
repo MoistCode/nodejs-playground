@@ -22,7 +22,11 @@ const app = express();
 // Register handlebars
 app.engine(
   "handlebars",
-  expressHBS({ layoutsDir: "views/layouts/", defaultLayout: "main-layout" })
+  expressHBS({
+    layoutsDir: "views/layouts/",
+    defaultLayout: "main-layout",
+    extname: "handlebars"
+  })
 );
 
 // Setting global configs
