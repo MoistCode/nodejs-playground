@@ -15,7 +15,9 @@
         <li><a href="/">Shop</a></li>
         <li><a href="/admin/add-product">Add Product</a></li>
         {{# if hasProducts }}
-        {{# else}}
+        {{#each prods}}
+        <li>{{this.title}}</li>
+        {{else}}
         <h1>No products found</h1>
         {{/if}}
       </ul>
