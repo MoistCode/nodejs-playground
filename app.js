@@ -20,17 +20,18 @@ const { shopRouter } = require("./routes/shop");
 const app = express();
 
 // Register handlebars
-app.engine(
-  "handlebars",
-  expressHBS({
-    layoutsDir: "views/layouts/",
-    defaultLayout: "main-layout",
-    extname: "handlebars"
-  })
-);
+// app.engine(
+//   "handlebars",
+//   expressHBS({
+//     layoutsDir: "views/layouts/",
+//     defaultLayout: "main-layout",
+//     extname: "handlebars"
+//   })
+// );
 
 // Setting global configs
-app.set("view engine", "handlebars");
+app.set("view engine", "ejs");
+// app.set("view engine", "handlebars");
 // app.set("view engine", "pug");
 // app.set('views', 'views'); express does this automatically
 
