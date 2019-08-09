@@ -5,10 +5,10 @@ const express = require("express");
 
 const router = express.Router();
 
-const { getProducts, postProducts } = require("../controllers/products");
+const { getAddProducts, postAddProducts } = require("../controllers/products");
 
-router.get("/add-product", getProducts);
+router.get("/add-product", getAddProducts);
 
-router.post("/add-product", postProducts);
+router.post("/add-product", postAddProducts);
 
 module.exports = { adminRouter: router };
