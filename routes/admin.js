@@ -5,14 +5,10 @@ const express = require("express");
 
 const router = express.Router();
 
-const { addProduct } = require("../controllers/products");
+const { getProducts, postProducts } = require("../controllers/products");
 
-router.get("/add-product");
+router.get("/add-product", getProducts);
 
-router.post("/add-product", (req, res, next) => {
-  const { body } = req;
-
-  res.redirect("/");
-});
+router.post("/add-product", postProducts);
 
 module.exports = { adminRouter: router };
