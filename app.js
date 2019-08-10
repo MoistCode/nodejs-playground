@@ -16,7 +16,11 @@ const expressHBS = require("express-handlebars");
 
 // Routes
 const { adminRouter } = require("./routes/admin");
-const { shopRouter } = require("./routes/shop");
+const { shopRouter } = require("./routes/shop");]
+
+// Controllers
+const { get404 } = require("./controllers/general");
+
 const app = express();
 
 // Register handlebars
@@ -46,9 +50,7 @@ app.use("/admin", adminRouter);
 app.use(shopRouter);
 
 // Handles 404
-app.use((req, res, next) => {
-  res.status(404).sendFile(path.join(__dirname, "views", "404.html"));
-});
+app.use(get404);
 
 // const server = http.createServer(app);
 
