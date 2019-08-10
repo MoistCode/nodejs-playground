@@ -16,10 +16,10 @@ const expressHBS = require("express-handlebars");
 
 // Routes
 const { adminRouter } = require("./routes/admin");
-const { shopRouter } = require("./routes/shop");]
+const { shopRouter } = require("./routes/shop");
 
 // Controllers
-const { get404 } = require("./controllers/general");
+const { get404 } = require("./controllers/error");
 
 const app = express();
 
