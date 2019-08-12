@@ -1,16 +1,15 @@
 const products = [];
 
 module.exports = class Product {
-  static fetchAll() {
-    return products;
-  }
+    constructor(t) {
+        this.title = t;
+    }
 
-  constructor({ title }) {
-    this.title = title;
-  }
+    save() {
+        products.push(this);
+    }
 
-  save() {
-    products.push(this);
-    return this;
-  }
-};
+    static fetchAll() {
+        return products;
+    }
+}

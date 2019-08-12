@@ -1,59 +1,24 @@
-/**
- * Alternatives to Express.js; most popular
- *  1.      Vanilla Node.js
- *  2.      Adonis.js
- *  3.      Koa
- *  4.      Sails.js
- *
- *  Highly flexible
- *  Middlewares!
- */
+const path = require('path');
 
-const express = require("express");
-const bodyParser = require("body-parser");
-const path = require("path");
-const expressHBS = require("express-handlebars");
+const express = require('express');
+const bodyParser = require('body-parser');
 
-// Routes
-const { adminRouter } = require("./routes/admin");
-const { shopRouter } = require("./routes/shop");
-
-// Controllers
-const { get404 } = require("./controllers/error");
+const errorController = require('./controllers/error');
 
 const app = express();
 
-// Register handlebars
-// app.engine(
-//   "handlebars",
-//   expressHBS({
-//     layoutsDir: "views/layouts/",
-//     defaultLayout: "main-layout",
-//     extname: "handlebars"
-//   })
-// );
+app.set('view engine', 'ejs');
+app.set('views', 'views');
 
-// Setting global configs
-app.set("view engine", "ejs");
-// app.set("view engine", "handlebars");
-// app.set("view engine", "pug");
-// app.set('views', 'views'); express does this automatically
+const adminRoutes = require('./routes/admin');
+const shopRoutes = require('./routes/shop');
 
-const PORT = 3000;
-
-// Middleware
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, "public"))); // Direct access to file system
+app.use(express.static(path.join(__dirname, 'public')));
 
-// Route handlers
-app.use("/admin", adminRouter);
-app.use(shopRouter);
+app.use('/admin', adminRoutes);
+app.use(shopRoutes);
 
-// Handles 404
-app.use(get404);
+app.use(errorController.get404);
 
-// const server = http.createServer(app);
-
-// server.listen(PORT);
-
-app.listen(PORT);
+app.listen(3000);

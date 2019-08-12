@@ -1,13 +1,11 @@
-const express = require("express");
-const path = require("path");
+const path = require('path');
 
-const rootDir = require("../utils/path");
+const express = require('express');
+
+const productsController = require('../controllers/products');
 
 const router = express.Router();
 
-const products = [{ title: "Example Product" }];
+router.get('/', productsController.getProducts);
 
-// Gets executed for / and /add-product
-router.use("/", getProducts);
-
-module.exports = { shopRouter: router };
+module.exports = router;
