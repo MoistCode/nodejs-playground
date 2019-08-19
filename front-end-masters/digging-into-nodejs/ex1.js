@@ -17,3 +17,10 @@ console.log("Hello"); // Send binary stream with buffer to become more effective
 
 process.stderr.write("Some error");
 console.error("Some error");
+
+/**
+ * Doesn't really look any different
+ * Shell env sees stdout and stderr as the same
+ * May be different between OS
+ * node ex1.js 1>/dev/null
+ */
