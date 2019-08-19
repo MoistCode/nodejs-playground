@@ -22,5 +22,8 @@ console.error("Some error");
  * Doesn't really look any different
  * Shell env sees stdout and stderr as the same
  * May be different between OS
- * node ex1.js 1>/dev/null
+ * node ex1.js 1>/dev/null send stdout
+ * node ex1.js 2>/dev/null send stderr
+ * node ex1.js 2>/dev/null 1>&2
+ * Use console.error so it goes to the error stream
  */
