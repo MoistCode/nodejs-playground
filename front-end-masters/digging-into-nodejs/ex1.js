@@ -27,3 +27,5 @@ console.error("Some error");
  * node ex1.js 2>/dev/null 1>&2
  * Use console.error so it goes to the error stream
  */
+
+process.stdin.read(); // Much more affected by shell; many quirks to call this
