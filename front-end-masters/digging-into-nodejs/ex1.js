@@ -4,6 +4,12 @@
 
 // Go find node and use it
 
+printHelp();
+
+process.argv; // Array of all of the args passed into the shell;
+console.log(process.argv);
+console.log(process.argv.slice(2));
+
 /**
  *  How does Node connects the its environment
  *  POSIX: C style programs integrate with linux style operating systems
@@ -38,4 +44,14 @@ process.stdin.read(); // Much more affected by shell; many quirks to call this
 
 /**
  * Shebang comment at top of a file; tells shell who to hand execution off to
+ * chmod u+x ex1.js
+ * ls -la
  */
+
+function printHelp() {
+  console.log("EX1 Usage");
+  console.log("  ex1.js --help");
+  console.log("");
+  console.log("-- help                               print this help");
+  console.log("");
+}
