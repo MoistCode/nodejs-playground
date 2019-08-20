@@ -1,3 +1,9 @@
+#!/usr/bin/env node
+
+"use strict";
+
+// Go find node and use it
+
 /**
  *  How does Node connects the its environment
  *  POSIX: C style programs integrate with linux style operating systems
@@ -29,3 +35,7 @@ console.error("Some error");
  */
 
 process.stdin.read(); // Much more affected by shell; many quirks to call this
+
+/**
+ * Shebang comment at top of a file; tells shell who to hand execution off to
+ */
