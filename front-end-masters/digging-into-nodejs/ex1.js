@@ -9,7 +9,8 @@ printHelp();
 process.argv; // Array of all of the args passed into the shell;
 console.log(process.argv);
 console.log(process.argv.slice(2));
-
+const args = require("minimist")(process.argv.slice(2));
+console.log(args);
 /**
  *  How does Node connects the its environment
  *  POSIX: C style programs integrate with linux style operating systems
