@@ -9,8 +9,21 @@ printHelp();
 process.argv; // Array of all of the args passed into the shell;
 console.log(process.argv);
 console.log(process.argv.slice(2));
-const args = require("minimist")(process.argv.slice(2));
+let args = require("minimist")(process.argv.slice(2)); // Can use yargs as well
 console.log(args);
+args = require("minimist")(process.argv.slice(2), {
+  boolean: ["help"],
+  string: ["file"]
+});
+
+if (args.help) {
+  printHelp();
+} else if (args.file) {
+  console.log(args.file);
+} else {
+  error("Incorrect usage", true);
+}
+
 /**
  *  How does Node connects the its environment
  *  POSIX: C style programs integrate with linux style operating systems
@@ -53,6 +66,16 @@ function printHelp() {
   console.log("EX1 Usage");
   console.log("  ex1.js --help");
   console.log("");
-  console.log("-- help                               print this help");
+  console.log("--help                               print this help");
+  console.log("--file={FILENAME}                    process the file");
   console.log("");
+}
+
+function error(msg, includeHelp = false) {
+  console.error(msg);
+
+  if (includeHelp) {
+    console.log("");
+    printHelp();
+  }
 }
